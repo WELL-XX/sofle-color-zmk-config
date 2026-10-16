@@ -53,6 +53,9 @@
         lcd-gate-gpios = <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
         rgb-gate-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
         rgb-data-gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
+        lcd-sck-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+        lcd-mosi-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+        lcd-cs-gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
     };
 };
 &uicr { nfct-pins-as-gpios; };

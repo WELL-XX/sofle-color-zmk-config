@@ -13,3 +13,12 @@ properties:
   rgb-data-gpios:
     type: phandle-array
     required: true
+  lcd-sck-gpios:
+    type: phandle-array
+    required: true
+  lcd-mosi-gpios:
+    type: phandle-array
+    required: true
+  lcd-cs-gpios:
+    type: phandle-array
+    required: true

@@ -13,6 +13,11 @@ static const struct gpio_dt_spec parent = GPIO_DT_SPEC_GET(DOMAINS, parent_gpios
 static const struct gpio_dt_spec lcd_gate = GPIO_DT_SPEC_GET(DOMAINS, lcd_gate_gpios);
 static const struct gpio_dt_spec rgb_gate = GPIO_DT_SPEC_GET(DOMAINS, rgb_gate_gpios);
 static const struct gpio_dt_spec rgb_data = GPIO_DT_SPEC_GET(DOMAINS, rgb_data_gpios);
+static const struct gpio_dt_spec lcd_signals[] = {
+    GPIO_DT_SPEC_GET(DOMAINS, lcd_sck_gpios),
+    GPIO_DT_SPEC_GET(DOMAINS, lcd_mosi_gpios),
+    GPIO_DT_SPEC_GET(DOMAINS, lcd_cs_gpios),
+};
 static const struct spi_dt_spec panel =
     SPI_DT_SPEC_GET(DT_NODELABEL(dh06_probe),
                     SPI_WORD_SET(8) | SPI_TRANSFER_LSB | SPI_CS_ACTIVE_HIGH, 0);
@@ -32,6 +37,15 @@ static int g2_interfaces_init(void) {
     }
     int rc = gpio_pin_configure_dt(&rgb_data, GPIO_OUTPUT_INACTIVE);
     if (rc) { return rc; }
+    /* This probe sends no SPI transactions: explicitly quiesce all LCD pins.
+     * The production driver must reapply SPI pinctrl on wake and verify the
+     * entire reset/startup waveform on hardware, including before this init.
+     */
+    for (size_t i = 0; i < ARRAY_SIZE(lcd_signals); i++) {
+        if (!gpio_is_ready_dt(&lcd_signals[i])) { return -ENODEV; }
+        rc = gpio_pin_configure_dt(&lcd_signals[i], GPIO_OUTPUT_INACTIVE);
+        if (rc) { return rc; }
+    }
     rc = gpio_pin_configure_dt(&lcd_gate, GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN);
     if (rc) { return rc; }
     rc = gpio_pin_configure_dt(&rgb_gate, GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN);
