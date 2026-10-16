@@ -1,6 +1,9 @@
 description: Independent Sofle Color LCD/RGB gates and native parent rail
 compatible: "sofle,power-domains"
 properties:
+  pwms:
+    type: phandle-array
+    required: true
   parent-gpios:
     type: phandle-array
     required: true

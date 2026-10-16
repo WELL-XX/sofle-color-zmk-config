@@ -1,5 +1,7 @@
 {
-  "revision": "G2-r01",
+  "revision": "G2-r02",
+  "selection_revision": "G1-r04",
+  "validation_scope": "Minimal firmware interface build only. Branches stay off; no LCD/VCOM driver or LED DMA protocol implemented.",
   "inputs": 64,
   "keys": 58,
   "left_extra_contacts": 5,
