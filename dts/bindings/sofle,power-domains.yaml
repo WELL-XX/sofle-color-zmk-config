@@ -1,0 +1,15 @@
+description: Independent Sofle Color LCD/RGB gates and native parent rail
+compatible: "sofle,power-domains"
+properties:
+  parent-gpios:
+    type: phandle-array
+    required: true
+  lcd-gate-gpios:
+    type: phandle-array
+    required: true
+  rgb-gate-gpios:
+    type: phandle-array
+    required: true
+  rgb-data-gpios:
+    type: phandle-array
+    required: true

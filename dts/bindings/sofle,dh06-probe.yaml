@@ -1,0 +1,3 @@
+description: DH06 SPI interface declaration for G2 compilation, not a display driver
+compatible: "sofle,dh06-probe"
+include: spi-device.yaml

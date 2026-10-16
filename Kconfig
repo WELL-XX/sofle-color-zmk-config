@@ -1,0 +1,7 @@
+config SOFLE_COLOR_G2_PROBE
+    bool "Sofle Color G2 hardware interface compile probe"
+    default y if SHIELD_SOFLE_COLOR_LEFT || SHIELD_SOFLE_COLOR_RIGHT
+    select SPI
+    help
+      Validate the dedicated SPI2 descriptor and independent active-low
+      open-drain gate definitions. Keep LCD/RGB off; do not transmit pixels.

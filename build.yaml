@@ -1,0 +1,10 @@
+include:
+  - board: nice_nano@2.0.0/nrf52840/zmk
+    shield: sofle_color_left
+    artifact-name: sofle-color-left-g2-minimal
+  - board: nice_nano@2.0.0/nrf52840/zmk
+    shield: sofle_color_right
+    artifact-name: sofle-color-right-g2-minimal
+  - board: nice_nano@2.0.0/nrf52840/zmk
+    shield: settings_reset
+    artifact-name: sofle-color-settings-reset

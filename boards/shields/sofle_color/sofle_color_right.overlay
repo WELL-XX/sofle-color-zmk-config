@@ -1,0 +1,18 @@
+#include "sofle_color.dtsi"
+
+&default_transform { col-offset = <7>; };
+
+&kscan0 {
+    col-gpios = <&pro_micro 10 GPIO_ACTIVE_HIGH>,
+                <&pro_micro 16 GPIO_ACTIVE_HIGH>,
+                <&pro_micro 14 GPIO_ACTIVE_HIGH>,
+                <&pro_micro 15 GPIO_ACTIVE_HIGH>,
+                <&pro_micro 18 GPIO_ACTIVE_HIGH>,
+                <&pro_micro 19 GPIO_ACTIVE_HIGH>;
+};
+
+&sc_domains {
+    rgb-gate-gpios = <&gpio1 7 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
+};
+
+&right_encoder { status = "okay"; };

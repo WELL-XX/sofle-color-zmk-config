@@ -1,0 +1,7 @@
+file_format: "1"
+id: sofle_color
+name: Sofle Color
+type: shield
+requires: [pro_micro]
+features: [keys, encoder]
+siblings: [sofle_color_left, sofle_color_right]
