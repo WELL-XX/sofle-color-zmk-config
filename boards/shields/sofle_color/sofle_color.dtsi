@@ -79,6 +79,5 @@
         compatible = "sofle,dh06-probe";
         reg = <0>;
         spi-max-frequency = <500000>;
-        spi-cs-high;
     };
 };
